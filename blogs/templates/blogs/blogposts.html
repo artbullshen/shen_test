@@ -1,0 +1,31 @@
+{% extends "blogs/base.html" %}
+
+{% block page_header %}
+  <h1>博客帖子列表：</h1>
+{% endblock page_header %}
+
+
+
+{% block content %}
+
+
+
+  <ul>
+    {% for blogpost in blogposts %}
+      <li><h3>
+        <a href="{% url 'blogs:blogpost' blogpost.id %}">{{ blogpost }}</a>
+        发贴人：{{ blogpost.owner }}
+      </h3></li>
+    {% empty %}
+      <li><h3>还没有人写帖，欢迎！！！</h3></li>
+    {% endfor %}
+  </ul>
+
+  <h3><a href="{% url 'blogs:new_blog' %}">增加新帖</a></h3>
+
+
+{% endblock content %}
+
+
+
+

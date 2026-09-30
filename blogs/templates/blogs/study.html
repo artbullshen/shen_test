@@ -1,0 +1,47 @@
+{% extends "blogs/base.html" %}
+
+{% load static %}
+
+{% block page_header %}
+
+  <div class="jumbotron">
+    <h3 class="display-5">阿特牛的个人博客!</h3>
+
+    <p class="lead">博客，是网络社会的一种交流工具！</p>
+    <h5>显示学生字段：
+      <ul>
+      {% for s in stu %}
+        <p> id值：{{ s.id }} </p>
+        <p> 姓名：{{ s.name }} 性别：{{ s.sex }} </p>
+        <p>班级： {{ s.gradeClass  }}</p>
+        <p> {{ s.icon }}</p>
+        <p>籍贯：{{ s.jiguan }} </p>
+        <p> </p>
+        <img src="{{ s.icon.url }}" alt="{{ s.name }}" width="50" height="40">
+        <p> </p>
+
+        <p></p>
+
+      {% endfor %}
+      </ul>
+    </h5>
+
+    <p>显示LOGO中存放的图片：</p>
+
+    <h3 class="display-6">
+    {% for item in items %}
+      <li>{{ item.name }}</li>
+      <li>{{ item.image.name }}
+      <li><img src="{{ item.image.url }}" alt="{{ item.name }}">
+
+    {% empty %}
+      <li>没有图形文件可显示!</li>
+    {% endfor %}
+
+    </h3>
+
+  </div>
+
+{% endblock page_header %}
+
+

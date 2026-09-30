@@ -1,0 +1,13 @@
+{% extends "blogs/base.html" %}
+
+{% block content %}
+  <h3>增加新博客帖子：</h3>
+
+  <form action="{% url 'blogs:new_blog' %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">增加并保存新帖</button>
+  </form>
+
+{% endblock content %}
+

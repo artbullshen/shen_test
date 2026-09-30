@@ -1,0 +1,44 @@
+{% extends "blogs/base.html" %}
+
+{% load static %}
+
+{% block page_header %}
+
+  <div class="jumbotron">
+    <h2 class="display-4">阿特牛的个人博客!</h2>
+
+    <p class="lead">博客，是网络社会的一种交流工具！</p>
+    <p>显示静态文件库（statics/image)中的图形文件!</p>
+    <img src="/static/image/my.jpg" alt="茫崖" width="700" heigh="400">
+    <p>青海茫崖，最孤独的城市。</p>
+    <p>注意：这里用原始的文件夹名statics，无法正常显示！！！</p>
+    <p>但是：改用设置的别名static，则OK！！！</p>
+
+    <p>显示第二个图形文件：</p>
+    <img src="/static/image/lhsygyyz.jpg" alt="标牌" width="500" heigh="300">
+    <p>青海冷湖石油工业遗址，位于冷湖镇，距黑独山2公里！</p>
+
+
+
+
+    <p>显示LOGO库（media/logo）中存放的图片：</p>
+    <p>说明：这个LOGO库中的图形文件，是通过管理员程序（admin），
+      加载到（load to）程序中，并在模型Test中保存有名称的文件！</p>
+
+    <h3 class="display-6">
+    {% for item in items %}
+      <li>{{ item.name }}</li>
+      <li>{{ item.image.name }}
+      <li><img src="{{ item.image.url }}" alt="{{ item.name }}" width="700" heigh="400">
+
+    {% empty %}
+      <li>没有图形文件可显示!</li>
+    {% endfor %}
+
+    </h3>
+
+  </div>
+
+{% endblock page_header %}
+
+

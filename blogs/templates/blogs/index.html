@@ -1,0 +1,18 @@
+{% extends "blogs/base.html" %}
+
+{% block page_header %}
+
+  <div class="jumbotron">
+    <h1 class="display-4">阿特牛的个人博客!</h1>
+
+    <p class="lead">博客，是网络社会的一种交流工具！</p>
+    <p>阿特牛简介：
+    <h3 class="display-6">网名阿特牛，1961年人，退休人员。</h3>
+    <p> 1990年在陕西安康水电三局中学，开始从事计算机普及教育工作。从苹果电脑到PC机、286时代，一路走来！</p>
+
+    <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}"
+      role="button">新用户注册 &raquo;</a>
+
+  </div>
+
+{% endblock page_header %}

@@ -1,0 +1,18 @@
+{% extends "blogs/base.html" %}
+
+{% block content %}
+
+  <p>
+    <a href="{% url 'blogs:blogpost' blogpost.id %}">{{ blogpost }}</a>
+  </p>
+
+  <p>添加新评论</p>
+  <form action="{% url 'blogs:new_comment' blogpost.id %}" method='post'>
+    {%csrf_token %}
+    {{ form.as_p }}
+    <button name='submit'>添加并保存评论</button>
+  </form>
+
+{% endblock content %}
+
+

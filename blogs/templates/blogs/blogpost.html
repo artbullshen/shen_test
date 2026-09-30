@@ -1,0 +1,38 @@
+{% extends 'blogs/base.html' %}
+
+{% block page_header %}
+  <h2>标题：{{ blogpost }} </h2>
+  <h3>  发贴时间： {{ blogpost.date_added }}</h3>
+  <h4> 发帖人： {{ blogpost.owner }}</h4>
+  <h3>内容：</h3>
+    <p>{{ blogpost.text }} </p>
+{% endblock page_header %}
+
+
+{% block content %}
+  <p>
+    <a href="{% url 'blogs:edit_blog' blogpost.id %}">编辑本贴</a>
+  </p>
+
+  <h4>评论：</h4>
+  <p>
+    <a href="{% url 'blogs:new_comment' blogpost.id %}">添加新评论</a>
+  </p>
+
+  {% for comment in comments %}
+    <div class="card mb-3">
+      <h4 class="card-header">
+      {{ comment.date_added|date:'M d, Y H:i' }}
+
+      <small><a href="{% url 'blogs:edit_comment' comment.id %}">编辑评论</a></small>
+      </h4>
+      <div class="card-body">
+        {{ comment.text|linebreaks }}
+      </div>
+    </div>
+   {% empty %}
+      <p> 没有评论！欢迎您来写评论！</p>
+   {% endfor %}
+
+
+{% endblock content %}
