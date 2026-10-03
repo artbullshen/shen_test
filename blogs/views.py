@@ -18,8 +18,10 @@ def index(request):
 
 # 定义图片加载视图并传送参数items给模板文件my_image_test。
 def image(request):
+    now = datetime.datetime.now()    
     items = Test.objects.all()
-    return render(request, 'blogs/my_image_test.html', {'items':items})
+    context = {'now':now, 'items':items}
+    return render(request, 'blogs/my_image_test.html', context)
 
 
 def study(request):
